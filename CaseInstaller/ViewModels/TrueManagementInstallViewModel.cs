@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Prism.Logging;
 
 namespace CaseInstaller.ViewModels
 {
@@ -15,8 +16,17 @@ namespace CaseInstaller.ViewModels
 
         public CaseInstallerBase caseInstaller;
 
-        
-        
+        public CaseInstallerLogger caseLogger;
+
+        public new ILoggerFacade LoggerFacade
+        {
+            get
+
+            {
+                return caseLogger;
+
+            }
+        }
 
         public DelegateCommand GoBackCommand { get; set; }
         public TrueManagementInstallViewModel()
