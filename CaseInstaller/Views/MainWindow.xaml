@@ -7,7 +7,7 @@
        >
     <DockPanel LastChildFill="True">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
-            <Button Command="{Binding NavigateCommand}" CommandParameter="TrueManagementInstall" Margin="5">TrueManagementInstall</Button>
+            <Button Command="{Binding NavigateCommand}" CommandParameter="TrueManagementInstall" Margin="5" >TrueManagementInstall</Button>
             <Button Command="{Binding NavigateCommand}" CommandParameter="TrueManagementSetting" Margin="5">TrueManagementSetting</Button>
         </StackPanel>
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />

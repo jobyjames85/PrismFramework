@@ -2,10 +2,11 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using CaseInstaller.Views;
+using System;
 
 namespace CaseInstaller.ViewModels
 {
-    public class MainWindowViewModel : BindableBase
+    public class MainWindowViewModel : CaseInstallerBase
     {
         private readonly IRegionManager _regionManager;
 
@@ -18,15 +19,17 @@ namespace CaseInstaller.ViewModels
 
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
+
+
         public MainWindowViewModel(IRegionManager regionManager)
         {
             _regionManager = regionManager;
 
-           
-
-            NavigateCommand = new DelegateCommand<string>(Navigate);
 
             
+            NavigateCommand = new DelegateCommand<string>(Navigate);
+
+           
         }
 
         private void Navigate(string navigatePath)
@@ -34,8 +37,10 @@ namespace CaseInstaller.ViewModels
             
             if (navigatePath != null)
                 
-            _regionManager.RequestNavigate("ContentRegion",navigatePath );
+            _regionManager.RequestNavigate("ContentRegion",navigatePath);
         }
+
+        
     }
 }
 

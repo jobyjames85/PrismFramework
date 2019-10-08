@@ -1,8 +1,8 @@
 ﻿<prism:PrismApplication  x:Class="CaseInstaller.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:prism="http://prismlibrary.com/"
-             xmlns:local="clr-namespace:CaseInstaller"
+             xmlns:prism="http://prismlibrary.com/" DispatcherUnhandledException="PrismApplication_DispatcherUnhandledException"
+             xmlns:local="clr-namespace:CaseInstaller" 
              >
     <Application.Resources>
 

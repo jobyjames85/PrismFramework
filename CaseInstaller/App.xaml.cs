@@ -31,5 +31,10 @@ namespace CaseInstaller
         {
             
         }
+
+        private void PrismApplication_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
