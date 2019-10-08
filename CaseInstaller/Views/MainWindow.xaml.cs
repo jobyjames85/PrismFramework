@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace CaseInstaller.View
+namespace CaseInstaller.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,5 +23,7 @@ namespace CaseInstaller.View
         {
             InitializeComponent();
         }
+
+       
     }
 }

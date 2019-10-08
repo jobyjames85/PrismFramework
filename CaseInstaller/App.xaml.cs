@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using CaseInstaller.View;
 using CaseInstaller.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Unity;
+using MainWindow = CaseInstaller.Views.MainWindow;
 
 namespace CaseInstaller
 {
@@ -13,6 +13,7 @@ namespace CaseInstaller
         protected override Window CreateShell()
         {
             return Container.Resolve<MainWindow>();
+           
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -28,7 +29,7 @@ namespace CaseInstaller
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-           
+            
         }
     }
 }
