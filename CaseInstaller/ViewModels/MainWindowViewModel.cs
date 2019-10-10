@@ -1,54 +1,65 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using CaseInstaller.Views;
+
 using System;
 using Prism.Logging;
+using System.Diagnostics;
+using System.Windows.Input;
+using System.IO;
 
 namespace CaseInstaller.ViewModels
 {
     public class MainWindowViewModel : CaseInstallerBase
     {
-        private readonly IRegionManager _regionManager;
-        public CaseInstallerLogger caseLogger;
-
+        private readonly IRegionManager regionManager;
+        public ILoggerFacade loggerFacade;
+       
+              
         private string _title = "Prism Unity Application";
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-        public Prism.Logging.ILoggerFacade LoggerFacade
+        
+
+        public DelegateCommand<string> WindowLoadCommand { get; private set; }
+
+        
+
+
+        public MainWindowViewModel(IRegionManager regionManager,ILoggerFacade loggerFacade)
         {
-            get
+            this.regionManager = regionManager;
+            this.loggerFacade = loggerFacade ;
 
-            {
-                return caseLogger;
+          
+            this.loggerFacade.Log("Debug",Category.Debug,Priority.High);
+            this.WindowLoadCommand= new DelegateCommand<string>(Navigate);
 
-            }
         }
-
-        public DelegateCommand<string> NavigateCommand { get; private set; }
-
-
-
-        public MainWindowViewModel(IRegionManager regionManager)
-        {
-            _regionManager = regionManager;
-
-
-            
-            NavigateCommand = new DelegateCommand<string>(Navigate);
-
-           
-        }
-
+        string path = @"D:\DotNET\test";
         private void Navigate(string navigatePath)
         {
-            
-            if (navigatePath != null)
-                
-            _regionManager.RequestNavigate("ContentRegion",navigatePath);
+            if (!Directory.Exists(path))
+            {
+                navigatePath = "TrueManagementInstall";
+                if (navigatePath != null)
+                {
+                    this.regionManager.RequestNavigate("ContentRegion", navigatePath);
+                }
+            }
+            else
+            {
+                navigatePath = "TrueManagementSetting";
+                if (navigatePath != null)
+                {
+                    this.regionManager.RequestNavigate("ContentRegion", navigatePath);
+                }
+
+            }
+
         }
 
         

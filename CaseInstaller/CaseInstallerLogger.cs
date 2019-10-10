@@ -15,12 +15,12 @@ namespace CaseInstaller
     {
         #region ILoggerFacade Members
 
+         
         protected static readonly ILog log = LogManager.GetLogger(typeof(CaseInstallerLogger));
 
         public void Log(string message, Category category, Priority priority)
         {
-            log4net.Config.XmlConfigurator.Configure();
-
+            
             switch (category)
             {
                 case Category.Debug:
@@ -35,9 +35,10 @@ namespace CaseInstaller
                 case Category.Info:
                     log.Info(message);
                     break;
+   
             }
-          }
-    }
+        }
+   }
 
 }
         #endregion

@@ -7,9 +7,11 @@
              mc:Ignorable="d" 
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Background="Aquamarine">
+    <Grid >
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Settings" Margin="5"/>
+            <Button Content="Update" Margin="5"/>
+            <Button Content="Modify" Margin="5"/>
+            <Button Content="Uninstall" Margin="5"/>
         </StackPanel>
     </Grid>
 </UserControl>

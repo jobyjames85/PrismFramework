@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <Grid Background="Aqua">
+    <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="GoBack" Margin="5" Command="{Binding GoBackCommand}"/>
+            <Button Content="Install" Margin="5" Command="{Binding GoBackCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

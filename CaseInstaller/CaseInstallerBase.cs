@@ -28,7 +28,10 @@ namespace CaseInstaller
             
            
         }
-
+        public interface ICloseable
+        {
+            void Close();
+        }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
