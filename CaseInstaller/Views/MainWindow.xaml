@@ -4,13 +4,24 @@
         xmlns:prism="http://prismlibrary.com/" 
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525"
+        Title="{Binding Title}" Height="480" Width="640"  WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
        >
     <DockPanel LastChildFill="True">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
-            <Label Content="TrueManagement"/>
+        <Button  Height="18" Width="18" Content="X" RenderTransformOrigin="1.033,0.243" Margin="600,5,0,420" Command="{Binding CloseCommand}" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Ellipse Fill="Red"/>
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="-560,60,50,50" Height="31" >
+            <Label Content="TrueManagement" Width="532"/>
         </StackPanel>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="-580,-50,40,32" Width="546" />
+
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">
                 <i:InvokeCommandAction Command="{Binding WindowLoadCommand}" />

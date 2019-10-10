@@ -12,35 +12,22 @@ namespace CaseInstaller.ViewModels
 {
     public class TrueManagementInstallViewModel : CaseInstallerBase
     {
-        
-
-        public CaseInstallerBase caseInstaller;
-
-        public CaseInstallerLogger caseLogger;
-
-        public new ILoggerFacade LoggerFacade
+        private readonly IRegionManager regionManager;
+        public DelegateCommand<string>InstallCommand { get; private set; }
+        public TrueManagementInstallViewModel(IRegionManager regionManager)
         {
-            get
-
-            {
-                return caseLogger;
-
-            }
+            this.regionManager = regionManager;
+            this.InstallCommand = new DelegateCommand<string>(Navigate);
+            
         }
 
-        public DelegateCommand GoBackCommand { get; set; }
-        public TrueManagementInstallViewModel()
-        {
-
-            GoBackCommand = new DelegateCommand(GoBack);
-
+        private void Navigate(string navigatePath)
+        {          
+                if (navigatePath != null)
+                {
+                    this.regionManager.RequestNavigate("ContentRegion", navigatePath);
+                }    
         }
 
-        
-
-        private void GoBack()
-        {
-           _journal.GoBack();
-        }
     }
 }

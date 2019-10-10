@@ -27,6 +27,7 @@ namespace CaseInstaller
         {
             containerRegistry.RegisterForNavigation<TrueManagementInstall>();
             containerRegistry.RegisterForNavigation<TrueManagementSetting>();
+            containerRegistry.RegisterForNavigation<TrueManagementOptions>();
             var logger = Container.Resolve<CaseInstallerLogger>();
             containerRegistry.RegisterInstance<ILoggerFacade>(logger);
         }

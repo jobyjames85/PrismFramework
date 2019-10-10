@@ -101,8 +101,10 @@
     </ApplicationDefinition>
     <Compile Include="CaseInstallerBase.cs" />
     <Compile Include="CaseInstallerLogger.cs" />
+    <Compile Include="Models\OptionData.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\TrueManagementInstallViewModel.cs" />
+    <Compile Include="ViewModels\TrueManagementOptionsViewModel.cs" />
     <Compile Include="ViewModels\TrueManagementSettingViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -114,6 +116,9 @@
     <Compile Include="Views\TrueManagementInstall.xaml.cs">
       <DependentUpon>TrueManagementInstall.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TrueManagementOptions.xaml.cs">
+      <DependentUpon>TrueManagementOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrueManagementSetting.xaml.cs">
       <DependentUpon>TrueManagementSetting.xaml</DependentUpon>
     </Compile>
@@ -122,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TrueManagementInstall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrueManagementOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,5 +166,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
