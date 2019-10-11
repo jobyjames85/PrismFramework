@@ -9,9 +9,9 @@
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid >
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Content="Update" Margin="5" />
+            <Button Content="Update" Margin="5" Command="{Binding GoForwardCommand}"/>
             <Button Content="Modify" Margin="5"  Command="{Binding ModifyCommand}" CommandParameter="TrueManagementOptions"/>
-            <Button Content="Uninstall" Margin="5"/>
+            <Button Content="Uninstall" Command="{Binding UninstallCommand}" Margin="5" />
         </StackPanel>
     </Grid>
 </UserControl>

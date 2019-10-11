@@ -55,7 +55,6 @@ namespace CaseInstaller
             }
         }
 
-
-
+       public  bool CanGoBack { get; }
     }
 }

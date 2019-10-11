@@ -101,9 +101,12 @@
     </ApplicationDefinition>
     <Compile Include="CaseInstallerBase.cs" />
     <Compile Include="CaseInstallerLogger.cs" />
+    <Compile Include="GenericXmlOps.cs" />
     <Compile Include="Models\OptionData.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\TrueManagementFinalViewModel.cs" />
     <Compile Include="ViewModels\TrueManagementInstallViewModel.cs" />
+    <Compile Include="ViewModels\TrueManagementLegalViewModel.cs" />
     <Compile Include="ViewModels\TrueManagementOptionsViewModel.cs" />
     <Compile Include="ViewModels\TrueManagementSettingViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
@@ -113,8 +116,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\TrueManagementFinal.xaml.cs">
+      <DependentUpon>TrueManagementFinal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TrueManagementInstall.xaml.cs">
       <DependentUpon>TrueManagementInstall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrueManagementLegal.xaml.cs">
+      <DependentUpon>TrueManagementLegal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TrueManagementOptions.xaml.cs">
       <DependentUpon>TrueManagementOptions.xaml</DependentUpon>
@@ -126,7 +135,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TrueManagementFinal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TrueManagementInstall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrueManagementLegal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

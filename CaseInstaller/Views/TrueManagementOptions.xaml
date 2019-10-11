@@ -22,7 +22,7 @@
         <Label Content="MSSQL User" HorizontalAlignment="Left" Margin="21,208,0,0" VerticalAlignment="Top" />
         <TextBox HorizontalAlignment="Left" Height="23" Margin="21,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" Text="{Binding SQL_Password}"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="331,308,0,0" VerticalAlignment="Top" Width="75" Command="{Binding GoBackCommand}"/>
-        <Button Content="Next" HorizontalAlignment="Left" Margin="434,308,0,0" VerticalAlignment="Top" Width="75" Command="{Binding MakeXml}"/>
+        <Button Content="Next" HorizontalAlignment="Left" Margin="434,308,0,0" VerticalAlignment="Top" Width="75" Command="{Binding MakeXml}" CommandParameter="TrueManagementLegal"/>
         
         <i:Interaction.Triggers>
             <i:EventTrigger EventName="Loaded">

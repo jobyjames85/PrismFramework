@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -17,12 +18,15 @@ namespace CaseInstaller.ViewModels
     class TrueManagementOptionsViewModel:CaseInstallerBase 
     {
         private readonly IRegionManager regionManager;
+       
         public OptionData optionData;
 
 
-        public DelegateCommand<string> GoBackCommand { get; private set; }
+        public DelegateCommand GoBackCommand { get; private set; }
 
-        public DelegateCommand<string> MakeXml { get; private set; }
+        public DelegateCommand<string> WindowLoadCommand { get; private set; }
+
+        public DelegateCommand MakeXml { get; private set; }
 
         private string trueurl;
         private string authorization;
@@ -30,10 +34,16 @@ namespace CaseInstaller.ViewModels
         private string sqluser;
         private string sqlpassword;
 
-
-        public TrueManagementOptionsViewModel()
+        //Constructor
+        public TrueManagementOptionsViewModel(IRegionManager regionManager)
         {
-            this.MakeXml = new DelegateCommand<string>(createxml);
+            this.regionManager = regionManager;
+
+            this.MakeXml = new DelegateCommand(createxml);
+
+            this.WindowLoadCommand = new DelegateCommand<string>(LoadData);
+
+            this.GoBackCommand = new DelegateCommand(GoBack);
         }
 
 
@@ -83,40 +93,59 @@ namespace CaseInstaller.ViewModels
         }
 
 
-        public void createxml(object serialiseData)
+        /// <summary>
+        /// Serialize to XML
+        /// </summary>
+        /// <param name="serialiseData"></param>
+        public void createxml()
         {
             optionData = new OptionData();
             optionData.TrueCare_Url = this.TrueURL ;
             optionData.OAuth2_ClientID = this.Authorization;
             optionData.MSSQL_Server = this.SQL_Server;
             optionData.MSSQL_User = this.SQL_User;
-            optionData.MSSQL_Password = this.SQL_Password;
+            optionData.MSSQL_Password = this.SQL_Password; 
 
-            serialiseData = optionData;
+            GenericXmlOps<OptionData> serializer = new GenericXmlOps<OptionData>();
+            string xml = serializer.Serialize(optionData);
+            CaseInstallerBase caseInstallerBase = new CaseInstallerBase();
 
-            StringWriter sw = new StringWriter();
-            XmlTextWriter tw = null;
-            try
+            string navigatePath = "TrueManagementLegal";
+            if (navigatePath != null)
             {
-                XmlSerializer serializer = new XmlSerializer(serialiseData.GetType());
-                tw = new XmlTextWriter(sw);
-                serializer.Serialize(tw, serialiseData);
+                this.regionManager.RequestNavigate("ContentRegion", navigatePath);
             }
-            finally
-            {
-                sw.Close();
-                if (tw != null)
-                {
-                    tw.Close();
-                }
-                XmlDocument xdoc = new XmlDocument();
-                xdoc.LoadXml(sw.ToString());
-                xdoc.Save("D:\\DotNET\\test\\CaseInstaller.xml");
-            }
-           
+            
             
         }
 
+        
+        /// <summary>
+        /// Deserialize from XML
+        /// </summary>
+        /// <param name="DeserialiseData"></param>
+        public void LoadData(object deserialiseData)
+        {
+            if (File.Exists(@"D:\\DotNET\\test\\CaseInstaller.xml"))
+            {
+                GenericXmlOps<OptionData> serializer = new GenericXmlOps<OptionData>();
+                var deserilizedObject = serializer.Deserialize();
+                this.TrueURL = deserilizedObject.TrueCare_Url;
+                this.Authorization = deserilizedObject.OAuth2_ClientID;
+                this.SQL_Server = deserilizedObject.MSSQL_Server;
+                this.SQL_User = deserilizedObject.MSSQL_User;
+                this.SQL_Password = deserilizedObject.MSSQL_Password;
+
+            }
+            else
+            {
+                this.TrueURL = String.Empty;
+                this.Authorization = String.Empty;
+                this.SQL_Server = String.Empty;
+                this.SQL_User = String.Empty;
+                this.SQL_Password = String.Empty;
+            }
+        }
 
        
     }

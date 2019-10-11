@@ -8,25 +8,27 @@ using System.Threading.Tasks;
 
 namespace CaseInstaller.ViewModels
 {
-    class TrueManagementSettingViewModel:CaseInstallerBase
+    class TrueManagementLegalViewModel:CaseInstallerBase
     {
         private readonly IRegionManager regionManager;
-        public DelegateCommand<string> ModifyCommand { get; private set; }
-        public DelegateCommand GoForwardCommand { get; private set; }
-        public TrueManagementSettingViewModel(IRegionManager regionManager)
+
+        public DelegateCommand GoBackCommand { get; private set; }
+
+        public DelegateCommand<string> AcceptCommand { get; private set; }
+
+        public TrueManagementLegalViewModel(IRegionManager regionManager)
         {
             this.regionManager = regionManager;
-            this.ModifyCommand = new DelegateCommand<string>(Navigate);
-            this.GoForwardCommand = new DelegateCommand(GoForward);
+            this.GoBackCommand = new DelegateCommand(GoBack);
+            this.AcceptCommand = new DelegateCommand<string>(Navigate);
         }
 
-        private void Navigate(string navigatePath)
+        public void Navigate(string navigatePath)
         {
             if (navigatePath != null)
             {
                 this.regionManager.RequestNavigate("ContentRegion", navigatePath);
             }
         }
-
     }
 }
