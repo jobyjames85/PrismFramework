@@ -6,6 +6,7 @@ using Prism.Modularity;
 using Prism.Unity;
 using MainWindow = CaseInstaller.Views.MainWindow;
 using Prism.Logging;
+using Prism.Services.Dialogs;
 
 namespace CaseInstaller
 {
@@ -20,7 +21,9 @@ namespace CaseInstaller
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-
+           
+            containerProvider.Resolve<CaseInstallerLogger>();
+            containerProvider.Resolve<DialogueService>();
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,13 +32,9 @@ namespace CaseInstaller
             containerRegistry.RegisterForNavigation<TrueManagementSetting>();
             containerRegistry.RegisterForNavigation<TrueManagementOptions>();
             containerRegistry.RegisterForNavigation<TrueManagementLegal>();
-            containerRegistry.RegisterForNavigation<TrueManagementFinal>();
-            var logger = Container.Resolve<CaseInstallerLogger>();
-            containerRegistry.RegisterInstance<ILoggerFacade>(logger);
-            
+            containerRegistry.RegisterForNavigation<TrueManagementFinal>();  
         }
-
-      
+    
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             

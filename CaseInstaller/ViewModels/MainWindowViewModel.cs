@@ -8,12 +8,13 @@ using System.Windows.Input;
 using System.IO;
 using System.Windows;
 
+
 namespace CaseInstaller.ViewModels
 {
     public class MainWindowViewModel : CaseInstallerBase
     {
         private readonly IRegionManager regionManager;
-        public ILoggerFacade loggerFacade;                   
+        public CaseInstallerLogger loggerFacade;                   
         private string _title = "Prism Unity Application";
 
         public string Title
@@ -26,7 +27,7 @@ namespace CaseInstaller.ViewModels
         public DelegateCommand<string> CloseCommand { get; private set; }
 
 
-        public MainWindowViewModel(IRegionManager regionManager,ILoggerFacade loggerFacade)
+        public MainWindowViewModel(IRegionManager regionManager,CaseInstallerLogger loggerFacade)
         {
             this.regionManager = regionManager;
             this.loggerFacade = loggerFacade ;    

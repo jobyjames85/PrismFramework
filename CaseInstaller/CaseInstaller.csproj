@@ -101,6 +101,7 @@
     </ApplicationDefinition>
     <Compile Include="CaseInstallerBase.cs" />
     <Compile Include="CaseInstallerLogger.cs" />
+    <Compile Include="DialogueService.cs" />
     <Compile Include="GenericXmlOps.cs" />
     <Compile Include="Models\OptionData.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

@@ -13,16 +13,12 @@ namespace CaseInstaller
     {
         public IRegionNavigationJournal _journal;
         public IRegionManager _regionManager;
-        
-        //public DelegateCommand GoForwardCommand { get; set; }
-
-
-        
+     
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;    
         }
-        //public DelegateCommand<string> NavigateCommand { get; private set; }
+
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
             

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="350" d:DesignWidth="535">
     <Grid>
-        <Label Content="Installed Succesfully" HorizontalAlignment="Left" Margin="87,74,0,0" VerticalAlignment="Top" Width="270"/>
+        <Label Content="Completed Succesfully" HorizontalAlignment="Left" Margin="87,74,0,0" VerticalAlignment="Top" Width="270"/>
         <Button Content="Close" Command="{Binding CloseCommand}" HorizontalAlignment="Left" Margin="412,288,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
